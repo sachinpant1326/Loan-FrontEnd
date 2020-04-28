@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoanService } from 'src/app/services/loan.service';
-import { Authentication } from 'src/app/models/Authentication.model';
+import { Transaction } from 'src/app/models/Transaction.model';
 
 @Component({
   selector: 'app-emi',
@@ -12,37 +12,38 @@ export class EmiComponent implements OnInit {
 
   payForm:FormGroup;
   submit:boolean=false;
-  authentication:Authentication;
-  
+  transactions:Transaction[];
 
   constructor(private formBuilder:FormBuilder,private loanService:LoanService) { }
 
   ngOnInit(): void {
     this.payForm=this.formBuilder.group({
-      accountId:['',Validators.required],
-      password:['',Validators.required],
-      noEmi:['',Validators.required]
-    })
+      emi:['',Validators.required]
+    });
+
+    this.getTransactions();
   }
 
-  payEmi(){
-    this.submit=true;
-    if(this.payForm.controls.error)
-      return;
-    
-    let obj={
-        "accountId":this.payForm.controls.accountId.value,
-        "password":this.payForm.controls.password.value,
-        "noOfEmi":this.payForm.controls.noEmi.value
-    }
-    
-    console.log(obj);
-    this.loanService.payEmi(obj).subscribe(
-      data=>{
-        console.log(data);
-      },
-      err=>{console.log("Network Erro")}
+  getTransactions(){
+    this.loanService.allTransaction(this.payForm.value).subscribe(
+      data=>{this.transactions=data},
+      err=>{console.log(err)}
     );
   }
 
+  payLoan(){
+    this.submit=true;
+    if(this.payForm.controls.error)
+      return;
+
+    let obj={
+      "accountId":localStorage.getItem('accountId'),
+      "emi":this.payForm.controls.emi.value
+    }
+    
+    this.loanService.payEmi(obj).subscribe(
+      data=>{console.log(data)},
+      err=>{console.log(err)}
+    );
+  }
 }

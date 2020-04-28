@@ -4,27 +4,75 @@
             <h2>TakeLoan</h2><br>
             <h3>Now take loan in minutes...!</h3>
         </div>
+
+
+        <!-- Now foreclose details-->
+
         <div class="col-lg-6">
-            <form [formGroup]="closeForm" (ngSubmit)="closeLoan()" class="form-group">
-
-                <!--account field-->
-                <label for="id">Account Id : </label>
-                <input type="text" id="id" formControlName="accountId" class="form-control">
-                <div class="col-lg-3 text-danger" *ngIf="submit && closeForm.controls.accountId.errors">
-                    Account Id is required
+            <div style="float:left; width:500px; box-shadow:0 0 3px #aaa; height:auto;color:#666;">
+                <div
+                    style="width:100%; padding:10px; float:left; background:#1ca8dd; color:#fff; font-size:30px; text-align:center;">
+                    Loan Details
                 </div>
+                <div style="width:100%; padding:0px 0px;border-bottom:1px solid rgba(0,0,0,0.2);float:left;">
+                    <div style="width:30%; float:left;padding:10px;">
 
-                <!-- password field-->
+                        <span style="font-size:14px;float:left; width:100%;">
+                            Sachin Pant
+                        </span>
 
-                <label for="id">Password : </label>
-                <input type="text" id="id" formControlName="password" class="form-control">
-                <div class="col-lg-3 text-danger" *ngIf="submit && closeForm.controls.password.errors">
-                    Password is required..
+                        <span style="font-size:14px;float:left;width:100%;">
+                            jessika@gmail.com
+                        </span>
+                    </div>
+
+                    <div style="width:40%; float:right; text-align: right;margin-right: 5px;">
+                        <b>Date : </b>2017-05-04
+                    </div>
                 </div>
+                <div style="width:100%; padding:0px; float:left;">
 
-                <button type="submit" class="btn btn-success">Pay Emi</button>
+                    <div style="width:100%;float:left;background:#efefef;">
+                        <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;font-weight:600;">
+                            Decription
+                        </span>
+                        <span style="font-weight:600;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                            Amount
+                        </span>
+                    </div>
 
-            </form>
-        </div>
+                    <div style="width:100%;float:left;">
+                        <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
+                            session with Jessika test
+                        </span>
+                        <span
+                            style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                            373 INR
+                        </span>
+                    </div>
+                    <div style="width:100%;float:left;">
+                        <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
+                            Promotional Code
+                        </span>
+                        <span
+                            style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                            373 INR
+                        </span>
+                    </div>
+
+                    <div style="width:100%;float:left; background:#fff;">
+
+                        <span
+                            style="font-weight:600;float:right;padding:10px 0px;width:40%;color:#666;text-align:center;">
+                            Total : 373 INR
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <button type="text" class="btn btn-success" (click)="closeLoan()">Pay Loan</button>
+            </div>      
+      </div>
+
     </div>
-</div>

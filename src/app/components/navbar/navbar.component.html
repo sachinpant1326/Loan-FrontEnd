@@ -8,10 +8,10 @@
 
             <ul class="nav navbar-nav col-md-10 col-12">
                 <li class="active col-md-2 col-6"><a routerLink="/home">Home</a></li>
-                <li class="col-md-2 col-6"><a routerLink="/home/emi">Pay Emi</a></li>
-                <li class="col-md-3 col-6"><a routerLink="/home/trans">Transactions</a></li>
+                <li class="col-md-3 col-6"><a routerLink="/home/emi">Pay Emi</a></li>
                 <li class="col-md-2 col-6"><a routerLink="/home/close">ForeClose</a></li>
-                <li class="col-md-3 col-6"><a routerLink="/home/balance">Balance Emi</a></li>
+                <li class="col-md-3 col-6"><a>Balance Emi : {{balance}}</a></li>
+                <li class="col-md-2 col-6"><button class="btn btn-success" (click)="logoutUser()">Logout</button></li>
             </ul>
         </div>
     </div>

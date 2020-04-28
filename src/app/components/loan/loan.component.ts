@@ -45,7 +45,7 @@ export class LoanComponent implements OnInit {
     this.setCustomer();
     this.setAuthentication();
 
-    this.loanService.issueLoan(this.authentication,this.customer).subscribe(
+    this.loanService.issueLoan(this.customer).subscribe(
       data=>{console.log(data)},
       err=>{console.log(err)}
     );
@@ -53,6 +53,7 @@ export class LoanComponent implements OnInit {
 
   setCustomer(){
     this.customer=new Customer();
+    this.customer.account_no=localStorage.getItem('accountId');
     this.customer.customer_name=this.applyForm.controls.name.value;
     this.customer.gender=this.applyForm.controls.gender.value;
     this.customer.adhaar__no=this.applyForm.controls.adhar.value;
@@ -62,6 +63,7 @@ export class LoanComponent implements OnInit {
     this.customer.email=this.applyForm.controls.email.value;
 
     this.customer.loan=new Loan();
+    this.customer.loan.account_no=localStorage.getItem('accountId');
     this.customer.loan.type=this.applyForm.controls.loantype.value;
     this.customer.loan.loan_amount=this.applyForm.controls.amount.value;
     this.customer.loan.emi_balance=this.applyForm.controls.month.value;

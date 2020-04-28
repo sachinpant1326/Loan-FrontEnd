@@ -9,24 +9,18 @@ import { LoanService } from 'src/app/services/loan.service';
 })
 export class ForecloseComponent implements OnInit {
 
-  closeForm:FormGroup;
   submit:boolean=false;
 
   constructor(private formBuilder:FormBuilder,private loanService:LoanService) { }
 
   ngOnInit(): void {
-    this.closeForm=this.formBuilder.group({
-      accountId:['',Validators.required],
-      password:['',Validators.required],
-    })
+    
   }
 
   closeLoan(){
     this.submit=true;
-    if(this.closeForm.controls.error)
-      return;
     
-    this.loanService.getAmount(this.closeForm.value).subscribe(
+    this.loanService.getAmount(localStorage.getItem('accountId')).subscribe(
       data=>{console.log(data)},
       err=>{console.log(err)}
     );

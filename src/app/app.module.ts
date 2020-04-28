@@ -10,12 +10,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoanComponent } from './components/loan/loan.component';
-import { TransactionComponent } from './components/transaction/transaction.component';
 import { EmiComponent } from './components/emi/emi.component';
 import { ForecloseComponent } from './components/foreclose/foreclose.component';
 import { CalcemiComponent } from './components/calcemi/calcemi.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { BalanceComponent } from './components/balance/balance.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +22,10 @@ import { BalanceComponent } from './components/balance/balance.component';
     RegisterComponent,
     HomeComponent,
     LoanComponent,
-    TransactionComponent,
     EmiComponent,
     ForecloseComponent,
     CalcemiComponent,
-    NavbarComponent,
-    BalanceComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

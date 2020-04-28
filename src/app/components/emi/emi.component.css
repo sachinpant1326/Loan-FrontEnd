@@ -1,7 +1,7 @@
-.pay-left{
-    background-color: black;
-    align-items: center;
-    color:white;
-    height: 100%;
-    padding-left: 30px;
-}
+
+tr:nth-child(odd)>td{
+    background-color: #F8F8F8;
+  }
+  tr:nth-child(even)>td {
+    background-color:white
+  }
