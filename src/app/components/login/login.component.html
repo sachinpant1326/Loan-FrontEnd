@@ -1,0 +1,32 @@
+<div class="row login-outer">
+    <!-- Left side of layout-->
+    <div class="col-lg-6 left-side">
+        <h2>TakeLoan</h2><br>
+        <h3>Now take loan in minutes...!</h3>
+    </div>
+
+    <!-- right side of layout (form) -->
+    <div class="col-lg-6" >
+        <form [formGroup]="loginForm" (ngSubmit)="verifyLogin()" class="form">
+
+            <label for="email">Email Id  </label>
+            <input type="text" name="email" formControlName="email" class="form-control"/> <br>
+            <div class="text-danger" *ngIf="submitted && loginForm.controls.email.errors">
+                Email is required..
+            </div>
+
+            <label for="password">Password  </label>
+            <input type="password" name="password" formControlName="password" class="form-control"> <br>
+            <div class="text-danger" *ngIf="submitted && loginForm.controls.password.errors">
+                Password is required..
+            </div>
+
+            <div class="text-danger" *ngIf="invalidUser">
+                User doesn't match ..
+            </div>
+
+            <button type="submit" class="btn btn-login">Login</button>
+            <a routerLink="/register" class="btn btn-register">Register</a>
+        </form>
+    </div>
+</div>

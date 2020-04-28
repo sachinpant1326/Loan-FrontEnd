@@ -1,0 +1,158 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 loan-left">
+            <h2>TakeLoan</h2><br>
+            <h3>Now take loan in minutes...!</h3>
+        </div>
+
+        <div class="col-lg-6">
+            <form [formGroup]="applyForm" (ngSubmit)="applyLoan()">
+
+                <!--Adhar field-->
+
+                <div class="col-lg-3">
+                    <label for="adhar">Adhaar Card No :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="number" id="adhar" formControlName="adhar"><br>
+                </div>
+
+                <div class="col-lg-offset-3 col-lg-9 text-danger" *ngIf="submitted && applyForm.controls.adhar.errors">
+                        Adhar must contain 16 digits.
+                </div>
+
+                <!--Name field-->
+
+                <div class="col-lg-3">
+                    <label for="name">Name :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" id="name" formControlName="name"><br>
+                </div>
+
+                <div class="col-lg-offset-3 col-lg-9 text-danger" *ngIf="submitted && applyForm.controls.name.errors">
+                    Name is required...
+                </div>
+
+                <!--gender field-->
+
+                <div class="col-lg-3">
+                    <label for="gender">Gender :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="radio" id="gender" value="male" formControlName="gender">Male&nbsp;
+                    <input type="radio" id="gender" value="female" formControlName="gender">Female<br>
+                </div>
+                <div class="col-lg-offset-3 col-lg-9 text-danger" *ngIf="submitted && applyForm.controls.gender.errors">
+                    Gender is required...
+                </div>
+
+                <!-- father name field-->
+
+                <div class="col-lg-3">
+                    <label for="fname">Father's Name :</label>
+                </div>
+                <div class="col-lg-4">
+                    <input type="text" id="fname" formControlName="fname"><br>
+                </div>
+
+                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.fname.errors">
+                    Father Name is required..
+                </div>
+
+                <!-- Salary field-->
+                <div class="col-lg-3">
+                    <label for="salary">Salary: </label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="number" id="salary" formControlName="salary"><br>
+                </div>
+
+                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.salary.errors">
+                    Salary is required..
+                </div>
+
+                <!--Contact field-->
+
+                <div class="col-lg-3">
+                    <label for="contact">Contact No :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="number" id="contact" formControlName="contact"><br>
+                </div>
+
+                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.contact.errors">
+                    Contact no must be of 10 digit..
+                </div>
+
+                <!-- Email field-->
+
+                <div class="col-lg-3">
+                    <label for="email">Email Id :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="email" id="email" formControlName="email"><br>
+                </div>
+                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.email.errors">
+                    Email id is not valid..
+                </div>
+
+                <!--Loan field-->
+
+                <div class="col-lg-3">
+                    <label for="ltype">Loan type : </label>
+                </div>
+                <div class="col-lg-9">
+                    <select id="ltype" formControlName="loantype">
+                        <option value="personal" selected>Personal</option>
+                        <option value="car">Car</option>
+                        <option value="home">Home</option>
+                    </select><br>
+                </div>
+                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.loantype.errors">
+                    Type of loan is required..
+                </div>
+
+                <!--Amount field-->
+
+                <div class="col-lg-3">
+                    <label for="amount">Loan Amount :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="number" id="amount" formControlName="amount"><br>
+                </div>
+                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.amount.errors">
+                    Amount is required..
+                </div>
+
+                <!--Month field-->
+
+                <div class="col-lg-3">
+                    <label for="month">Month to Pay :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="number" id="month" formControlName="month"><br>
+                </div>
+                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.month.errors">
+                    Month is required..
+                </div>
+
+                <!--Password field-->
+                <div class="col-lg-3">
+                    <label for="password">Password :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" id="password" formControlName="password"><br>
+                    (Remember it for further use)
+                </div>
+                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.password.errors">
+                    Password must contain a letter and a number..
+                </div>
+            
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-primary">Apply for Loan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

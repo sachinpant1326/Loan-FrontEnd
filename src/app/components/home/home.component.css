@@ -1,0 +1,29 @@
+.home-img{
+    background-image: url("../../../assets/images/home.jpeg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 70%;
+    width: 100%;
+    color: white;
+    margin-top: 0px;
+}
+
+.my-carousel{
+    height: 400px;
+}
+
+.loan-btn{
+    height:50px;
+    width: 200px;
+    color: black;
+    margin-top: 300px;
+}
+
+.detail{
+    color: #828385;
+}
+
+.grayfooter{
+    background-color: #2F2F31; 
+    color: white;
+}

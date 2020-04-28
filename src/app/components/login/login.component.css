@@ -1,0 +1,18 @@
+.login-outer{
+    align-items: center;
+    height: 600px;
+}
+
+.btn-register{
+    margin-left: 10px;
+}
+
+.btn-login{
+    background-color: black;
+    color: white;
+}
+
+.btn-register{
+    background-color: gray;
+    color: white;
+}
