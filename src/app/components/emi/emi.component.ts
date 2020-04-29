@@ -11,14 +11,14 @@ import { Transaction } from 'src/app/models/Transaction.model';
 export class EmiComponent implements OnInit {
 
   payForm:FormGroup;
-  submit:boolean=false;
+  submitted:boolean=false;
   transactions:Transaction[];
 
   constructor(private formBuilder:FormBuilder,private loanService:LoanService) { }
 
   ngOnInit(): void {
     this.payForm=this.formBuilder.group({
-      emi:['',Validators.required]
+      emi:['',[Validators.required,Validators.min(1),Validators.max(12)]],
     });
 
     this.getTransactions();
@@ -32,7 +32,7 @@ export class EmiComponent implements OnInit {
   }
 
   payLoan(){
-    this.submit=true;
+    this.submitted=true;
     if(this.payForm.controls.error)
       return;
 

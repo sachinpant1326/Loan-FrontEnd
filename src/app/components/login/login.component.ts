@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class LoginComponent implements OnInit {
 
   loginForm:FormGroup;
-  submitted=false;
+  submitted:boolean=false;
   invalidUser=false;
 
   constructor(private formBuilder:FormBuilder,private router:Router,
@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void 
   {
     this.loginForm=this.formBuilder.group({
-      email:['',Validators.required],
-      password:['',Validators.required]
+      email:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.pattern("[A-Za-z0-9]{6,10}")]]
     });
   }
 
@@ -30,21 +30,17 @@ export class LoginComponent implements OnInit {
   {
     this.submitted=true;
     if(this.loginForm.invalid)
-      return;
-    
+    {
+       return;
+    }
+
     this.authService.login(this.loginForm.value).subscribe(
       data=>{
-          // if(data=="Authentication failed")
-          // {
-          //   console.log(data);
-          //   this.invalidUser=true;
-          //   return;
-          // }
-          // localStorage.username=data;
-          console.log(data);
+          alert(data);
+          localStorage.setItem('accountId',data.toString());
           this.router.navigate(['/home']);
       },
-      err=>{console.log("error")}
+      err=>{alert("You are not a valid user")}
     );
     
   }

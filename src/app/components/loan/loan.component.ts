@@ -21,18 +21,17 @@ export class LoanComponent implements OnInit {
 
   ngOnInit(): void {
     this.applyForm=this.formBuilder.group({
-      adhar:['',Validators.required],
-      name:['',Validators.required],
+      adhar:['',[Validators.required,Validators.pattern("[1-9][0-9]{15}")]],
+      name:['',[Validators.required,Validators.pattern("[A-Za-z ]{1,20}")]],
       gender:['',Validators.required],
-      fname:['',Validators.required],
-      salary:['',Validators.required],
-      contact:['',Validators.required],
+      fname:['',[Validators.required,Validators.pattern("[A-Za-z ]{1,15}")]],
+      salary:['',[Validators.required,Validators.min(5000)]],
+      contact:['',[Validators.required,Validators.pattern("[6-9][0-9]{9}")]],
       email:['',[Validators.required,Validators.email]],
       loantype:['',Validators.required],
-      amount:['',Validators.required],
-      month:['',Validators.required],
-      password:['',Validators.required]
-
+      amount:['',[Validators.required,Validators.min(10000),Validators.max(100000000)]],
+      month:['',[Validators.required,Validators.min(1),Validators.max(240)]],
+      password:['',[Validators.required,Validators.pattern("[A-Za-z0-9]{6,10}")]]
     })
   }
 

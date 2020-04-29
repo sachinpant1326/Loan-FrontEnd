@@ -5,31 +5,29 @@
     </div>
 
     <!-- right side of layout (form) -->
-    <div class="col-lg-6">
-        <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
-            <label for="email">Email Id : </label>
-            <input type="email" formControlName="email" class="form-control" /><br>
+    <div class="col-lg-6" >
+        <form [formGroup]="registerForm" (ngSubmit)="registerUsers()" class="form">
+
+            <label for="email">Email Id  </label>
+            <input type="email" name="email" formControlName="email" class="form-control"/> 
             <div class="text-danger" *ngIf="submitted && registerForm.controls.email.errors">
                 Email is required..
             </div>
-    
-            <label for="password">Password</label>
-            <input type="password" formControlName="password" class="form-control"/><br>
+
+            <label for="password">Password  </label>
+            <input type="password" name="password" formControlName="password" class="form-control"> 
             <div class="text-danger" *ngIf="submitted && registerForm.controls.password.errors">
-                Password is required..
+                Length must be 6-10 and don't use special character ..
             </div>
-    
-            <label for="password">Confirm Password</label>
-            <input type="password" formControlName="confirmPassword" class="form-control"/><br>
-            <div class="text-danger" *ngIf="submitted && registerForm.controls.confirmPassword.errors">
-                Password is required..
+
+            <label for="confPassword">Confirm Password  </label>
+            <input type="password" name="confPassword" formControlName="confPassword" class="form-control"> 
+            <div class="text-danger" *ngIf="submitted && wrongpassword">
+                Password should be same ..
             </div>
-            <div class="text-danger" *ngIf="submitted && registerForm.controls.password.value!=registerForm.controls.confirmPassword.value">
-                Use the same password..
-            </div>
-    
-            <button type="submit" class="btn btn-success">Register</button>&nbsp;
-            <button type="reset" class="btn btn-primary">Reset</button>
+
+            <button type="submit" class="btn btn-success">Register</button>
+            
         </form>
     </div>
 </div>

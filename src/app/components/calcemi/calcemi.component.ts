@@ -14,9 +14,9 @@ export class CalcemiComponent implements OnInit {
 
   ngOnInit(): void {
     this.calcForm=this.formBuilder.group({
-      amount:['',Validators.required],
+      amount:['',[Validators.required,Validators.min(10000),Validators.max(1000000)]],
       type:['',Validators.required],
-      noEmi:['',Validators.required]
+      noEmi:['',[Validators.required,Validators.min(1),Validators.max(240)]]
     })
   }
 

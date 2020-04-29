@@ -21,9 +21,9 @@
                         <input type="number" id="amount" formControlName="amount" class="form-control">
                     </div>
                     <div class="col-md-3"
-                        *ngIf="submit && calcForm.controls.amount.errors && calcForm.controls.amount.errors.required"
+                        *ngIf="submit && calcForm.controls.amount.errors && calcForm.controls.amount.errors"
                         class="text-danger">
-                        Required
+                        Amount should be between 10 Thousand to 10 Crore..
                     </div>
                 </div>
 
@@ -32,28 +32,31 @@
                         <label for ="type">Type of Loan (eg- home or education)</label>
                     </div>
                     <div class="col-md-7">
-                        <input type="text" id="type" formControlName="type" class="form-control">
+                        <select id="type" formControlName="type">
+                            <option value="personal" selected>Personal</option>
+                            <option value="car">Car</option>
+                            <option value="home">Home</option>
+                        </select><br>
                     </div>
 
-                    <div class="col-lg-3"
-                        *ngIf="submit && calcForm.controls.noEmi.errors && calcForm.controls.noEmi.errors.required"
+                    <div class="col-lg-3" *ngIf="submit && calcForm.controls.type.errors" 
                         class="text-danger">
-                        Required
+                        required..
                     </div>
 
                 </div>
         
                 <div class="row">
                     <div class="col-md-5">
-                        <label for=emi>No of Emi : </label>
+                        <label for=emi>No of emi (month) : </label>
                     </div>
                     <div class="col-md-7">
                         <input type="number" id="emi" formControlName="noEmi" class="form-control">
                     </div>
                     <div class="col-md-3"
-                        *ngIf="submit && calcForm.controls.noEmi.errors && calcForm.controls.noEmi.errors.required"
+                        *ngIf="submit && calcForm.controls.noEmi.errors && calcForm.controls.noEmi.errors"
                         class="text-danger">
-                        Required
+                        Month can be in between 1 to 240..
                     </div>
                 </div>
         

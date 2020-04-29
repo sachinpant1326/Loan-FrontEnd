@@ -9,7 +9,17 @@
             <div class="col-lg-4">
                 <!--account field-->
                 <input type="text" id="emi" formControlName="emi" class="form-control"/>
+                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.required">
+                    Field is required..
+                </div>
+                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.min">
+                    Minimum emi should be greater than 0 ..
+                </div>
+                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.max">
+                    Minimum emi should be less than 12 ..
+                </div>
             </div>
+
             <div class="col-lg-2">
                 <Button class="btn btn-primary">Pay Emi</Button>
             </div>

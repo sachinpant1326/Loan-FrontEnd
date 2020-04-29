@@ -1,46 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoanService } from 'src/app/services/loan.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css','../../sharedcss/common.css']
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
   registerForm:FormGroup;
-  submitted=false;
+  submitted:boolean=false;
+  wrongpassword:boolean=false;
 
-  constructor(private formBuilder:FormBuilder,private router:Router,private authService:AuthenticationService) {
 
-  }
+  constructor(private formBuilder:FormBuilder,private router:Router,
+              private authService:AuthenticationService) {
+   }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.registerForm=this.formBuilder.group({
-      email:['',Validators.required],
-      password:['',Validators.required],
-      confirmPassword:['',Validators.required]
+      email:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.pattern("[A-Za-z0-9]{6,10}")]],
+      confPassword:['',[Validators.required,Validators.pattern("[A-Za-z0-9]{6,10}")]]
     });
   }
 
-  registerUser(){
-
+  registerUsers(){
     this.submitted=true;
-    console.log("clicked");
-    
     if(this.registerForm.invalid)
     {
-      console.log("wrong");
-      this.submitted=false;
       return;
-    } 
+    }
+    if(this.registerForm.controls.password.value!=this.registerForm.controls.confPassword.value)
+    {
+      this.wrongpassword=true;
+      return;
+    }
 
     this.authService.register(this.registerForm.value).subscribe(
-      data=>{console.log(data)},
-      err=>{console.log(err)}
+      data=>{alert("You are registered.")},
+      err=>{alert("Some problem occured.")}
     );
     this.router.navigate(['/login']);
   }
