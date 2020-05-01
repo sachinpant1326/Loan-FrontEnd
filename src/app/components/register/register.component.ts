@@ -41,8 +41,12 @@ export class RegisterComponent implements OnInit {
     }
 
     this.authService.register(this.registerForm.value).subscribe(
-      data=>{alert("You are registered.")},
-      err=>{alert("Some problem occured.")}
+      data=>{
+        console.log(data);
+        alert(data)},
+      err=>{
+        console.log(err);
+        alert(err);}
     );
     this.router.navigate(['/login']);
   }

@@ -137,18 +137,6 @@
                 <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.month.errors">
                     Month can be in between 1 to 240..
                 </div>
-
-                <!--Password field-->
-                <div class="col-lg-3">
-                    <label for="password">Password :</label>
-                </div>
-                <div class="col-lg-9">
-                    <input type="text" id="password" formControlName="password"><br>
-                    (Remember it for further use)
-                </div>
-                <div class="col-lg-9 col-lg-offset-3 text-danger" *ngIf="submitted && applyForm.controls.password.errors">
-                    Password can't have special character and length should be 6 to 10..
-                </div>
             
                 <div class="col-lg-12">
                     <button type="submit" class="btn btn-primary">Apply for Loan</button>

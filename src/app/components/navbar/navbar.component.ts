@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from 'src/app/services/loan.service';
 import { Router } from '@angular/router';
+import { Status } from 'src/app/models/Status.model';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +10,17 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  balance:string;
+  loanDetails:Status;
+
   constructor(private router:Router,private loanService:LoanService) { }
 
   ngOnInit(): void {
-    this.loanService.getBalance(localStorage.getItem('accountId')).subscribe(
-      data=>{this.balance=data},
-      err=>{this.balance="0"}
+    this.loanService.loanDetails(localStorage.getItem('accountId')).subscribe(
+      data=>{
+        this.loanDetails=data;
+        console.log(data);
+      },
+      err=>{this.loanDetails.emi="0"}
     )
   }
 

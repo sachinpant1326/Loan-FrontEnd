@@ -18,14 +18,14 @@ export class EmiComponent implements OnInit {
 
   ngOnInit(): void {
     this.payForm=this.formBuilder.group({
-      emi:['',[Validators.required,Validators.min(1),Validators.max(12)]],
+      emi:['',[Validators.required,Validators.pattern("[1-5]{1}")]],
     });
-
+    
     this.getTransactions();
   }
 
   getTransactions(){
-    this.loanService.allTransaction(this.payForm.value).subscribe(
+    this.loanService.allTransaction(localStorage.getItem('accountId')).subscribe(
       data=>{this.transactions=data},
       err=>{console.log(err)}
     );
@@ -33,17 +33,16 @@ export class EmiComponent implements OnInit {
 
   payLoan(){
     this.submitted=true;
-    if(this.payForm.controls.error)
-      return;
-
+    
+    console.log("going to call backend");
     let obj={
       "accountId":localStorage.getItem('accountId'),
       "emi":this.payForm.controls.emi.value
     }
     
     this.loanService.payEmi(obj).subscribe(
-      data=>{console.log(data)},
-      err=>{console.log(err)}
+      data=>{alert(data)},
+      err=>{alert(err)}
     );
   }
 }

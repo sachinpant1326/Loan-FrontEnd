@@ -30,8 +30,8 @@ export class LoanComponent implements OnInit {
       email:['',[Validators.required,Validators.email]],
       loantype:['',Validators.required],
       amount:['',[Validators.required,Validators.min(10000),Validators.max(100000000)]],
-      month:['',[Validators.required,Validators.min(1),Validators.max(240)]],
-      password:['',[Validators.required,Validators.pattern("[A-Za-z0-9]{6,10}")]]
+      month:['',[Validators.required,Validators.min(1),Validators.max(240)]]
+      
     })
   }
 
@@ -42,20 +42,19 @@ export class LoanComponent implements OnInit {
       return;
 
     this.setCustomer();
-    this.setAuthentication();
 
     this.loanService.issueLoan(this.customer).subscribe(
-      data=>{console.log(data)},
-      err=>{console.log(err)}
+      data=>{alert(data)},
+      err=>{alert(err)}
     );
   }
 
   setCustomer(){
     this.customer=new Customer();
     this.customer.account_no=localStorage.getItem('accountId');
+    this.customer.aadhaar=this.applyForm.controls.adhar.value;
     this.customer.customer_name=this.applyForm.controls.name.value;
     this.customer.gender=this.applyForm.controls.gender.value;
-    this.customer.adhaar__no=this.applyForm.controls.adhar.value;
     this.customer.father_name=this.applyForm.controls.fname.value;
     this.customer.salary=this.applyForm.controls.salary.value;
     this.customer.phone=this.applyForm.controls.contact.value;
@@ -67,10 +66,5 @@ export class LoanComponent implements OnInit {
     this.customer.loan.loan_amount=this.applyForm.controls.amount.value;
     this.customer.loan.emi_balance=this.applyForm.controls.month.value;
     
-  }
-
-  setAuthentication(){
-    this.authentication=new Authentication();
-    this.authentication.password=this.applyForm.controls.password.value;
   }
 }

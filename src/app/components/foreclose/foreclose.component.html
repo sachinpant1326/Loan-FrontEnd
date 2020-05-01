@@ -18,16 +18,16 @@
                     <div style="width:30%; float:left;padding:10px;">
 
                         <span style="font-size:14px;float:left; width:100%;">
-                            Sachin Pant
+                            {{loanDetails.name}}-->
                         </span>
 
                         <span style="font-size:14px;float:left;width:100%;">
-                            jessika@gmail.com
+                            {{email}}-->
                         </span>
                     </div>
 
                     <div style="width:40%; float:right; text-align: right;margin-right: 5px;">
-                        <b>Date : </b>2017-05-04
+                        <b>Date : </b>
                     </div>
                 </div>
                 <div style="width:100%; padding:0px; float:left;">
@@ -43,20 +43,30 @@
 
                     <div style="width:100%;float:left;">
                         <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
-                            session with Jessika test
+                            Emi Remaining
                         </span>
                         <span
                             style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
-                            373 INR
+                            {{loanDetails.emi}}
                         </span>
                     </div>
                     <div style="width:100%;float:left;">
                         <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
-                            Promotional Code
+                            Emi amount ( /month)
                         </span>
                         <span
                             style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
-                            373 INR
+                            {{loanDetails.emi_amount}}
+                        </span>
+                    </div>
+
+                    <div style="width:100%;float:left;">
+                        <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
+                            Penalty
+                        </span>
+                        <span
+                            style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                            {{loanDetails.penalty}}
                         </span>
                     </div>
 
@@ -64,7 +74,7 @@
 
                         <span
                             style="font-weight:600;float:right;padding:10px 0px;width:40%;color:#666;text-align:center;">
-                            Total : 373 INR
+                            {{totalAmount}}
                         </span>
                     </div>
 

@@ -8,15 +8,12 @@
             </div>
             <div class="col-lg-4">
                 <!--account field-->
-                <input type="text" id="emi" formControlName="emi" class="form-control"/>
+                <input type="number" id="emi" formControlName="emi" class="form-control"/>
                 <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.required">
                     Field is required..
                 </div>
-                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.min">
-                    Minimum emi should be greater than 0 ..
-                </div>
-                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.max">
-                    Minimum emi should be less than 12 ..
+                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.pattern">
+                    Invalid value (1-5 is valid) ..
                 </div>
             </div>
 
@@ -39,8 +36,8 @@
                         <th>Payment Time</th>
                     </tr>
                 </thead>
-                <tr *ngFor="let transaction of transactions;let i of index">
-                    <td>{{i}}</td>
+                <tr *ngFor="let transaction of transactions;let i=index;">
+                    <td>{{i+1}}</td>
                     <td>{{transaction.no_of_month}}</td>
                     <td>{{transaction.payment_time}}</td>
                 </tr>

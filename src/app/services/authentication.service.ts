@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Authentication } from '../models/Authentication.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,15 @@ export class AuthenticationService {
   constructor(private httpClient:HttpClient) { }
 
   register(authentication){
-    console.log(authentication);
-    console.log("register called");
-    return this.httpClient.post(this.baseUrl+"register",authentication)
+    const headers=new HttpHeaders().set('Content-Type','text/plain;charset=utf-8');
+    return this.httpClient.post(this.baseUrl+"register",authentication,{headers,responseType:'text'});
   }
 
   login(authentication){
-    return this.httpClient.get(this.baseUrl+"login/"+authentication.email+"/"+authentication.password)
+    const headers=new HttpHeaders().set('Content-Type','text/plain;charset=utf-8');
+    return this.httpClient.get(
+      this.baseUrl+"login/"+authentication.email+"/"+authentication.password,
+      {headers,responseType:'text'}
+    );
   }
 }
