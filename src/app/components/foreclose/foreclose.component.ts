@@ -10,37 +10,51 @@ import { Status } from 'src/app/models/Status.model';
 })
 export class ForecloseComponent implements OnInit {
 
-  submit:boolean=false;
-  loanDetails:Status;
-  totalAmount:number;
-  email:string;
+  submit: boolean = false;
+  loanDetails: Status;
+  totalAmount: number;
+  email: string;
+  date: Date;
 
-  constructor(private formBuilder:FormBuilder,private loanService:LoanService) { }
+  constructor(private formBuilder: FormBuilder, private loanService: LoanService) { }
 
   ngOnInit(): void {
-    this.email=localStorage.getItem('email');
-    this.loanService.loanDetails(this.email).subscribe(
-      data=>{
-        this.loanDetails=data;
-        console.log(data)
-      },
-      err=>{
-        this.loanDetails.emi="0";
-        this.loanDetails.emi_amount="0.0";
-        this.loanDetails.name="GOD";
-        this.loanDetails.penalty="0.0";
-      }
-    );
 
-    this.totalAmount=Number(this.loanDetails.emi)*Number(this.loanDetails.emi_amount)+Number(this.loanDetails.penalty);
-
+      this.initialize();
+      this.getLoanStatus();
   }
 
-  closeLoan(){
-    this.submit=true;
+  initialize() {
+
+    this.date=new Date();
+    this.email = localStorage.getItem('email');
+    this.loanDetails = new Status();
+    this.loanDetails.emi = "0";
+    this.loanDetails.emi_amount = "0.0";
+    this.loanDetails.name = "GOD";
+    this.loanDetails.penalty = "0.0";
+    this.totalAmount = 0;
+  }
+
+  getLoanStatus(){
+    this.loanService.loanDetails(localStorage.getItem('accountId')).subscribe(
+      data => {
+        this.loanDetails = data;
+        this.totalAmount = Number(this.loanDetails.emi) * Number(this.loanDetails.emi_amount) + Number(this.loanDetails.penalty);
+      },
+      err => {
+      }
+    );
+  }
+
+  closeLoan() {
+    this.submit = true;
     this.loanService.foreClose(localStorage.getItem('accountId')).subscribe(
-      data=>{alert(data)},
-      err=>{alert("Some Problem ocured")}
+      data => { 
+        alert(data);
+        this.getLoanStatus();
+      },
+      err => { alert("You don't have any loan") }
     );
   }
 

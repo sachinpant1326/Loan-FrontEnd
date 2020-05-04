@@ -2,25 +2,3 @@
     align-items: center;
     height: 600px;
 }
-
-.left-side{
-    background-color: black;
-    align-items: center;
-    color:white;
-    height: 100%;
-    padding-left: 30px;
-}
-
-.btn-register{
-    margin-left: 10px;
-}
-
-.btn-login{
-    background-color: black;
-    color: white;
-}
-
-.btn-register{
-    background-color: gray;
-    color: white;
-}

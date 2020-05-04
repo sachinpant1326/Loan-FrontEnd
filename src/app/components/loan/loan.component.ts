@@ -38,15 +38,23 @@ export class LoanComponent implements OnInit {
   applyLoan(){
     
     this.submitted=true;
-    if(this.applyForm.controls.error)
+    if(this.applyForm.invalid)
       return;
 
     this.setCustomer();
 
     this.loanService.issueLoan(this.customer).subscribe(
-      data=>{alert(data)},
-      err=>{alert(err)}
+      data=>{
+        alert(data);
+        this.loanService.balance=this.customer.loan.emi_balance+"";
+        this.submitted=false;
+        this.applyForm.reset();
+      },
+      err=>{
+        alert(err.error);
+      }
     );
+
   }
 
   setCustomer(){

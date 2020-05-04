@@ -35,15 +35,14 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(this.loginForm.value).subscribe(
       data=>{
-          console.log(data);
-          alert(data);
           localStorage.setItem('accountId',data.toString());
           localStorage.setItem('email',this.loginForm.controls.email.value);
           this.router.navigate(['/home']);
       },
       err=>{
-        console.log(err);
-        alert(err);
+        alert(err.error);
+        this.submitted=false;
+        this.loginForm.reset();
       }
     );
   }

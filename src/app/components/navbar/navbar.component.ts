@@ -10,23 +10,20 @@ import { Status } from 'src/app/models/Status.model';
 })
 export class NavbarComponent implements OnInit {
 
-  loanDetails:Status;
-
-  constructor(private router:Router,private loanService:LoanService) { }
+  constructor(private router:Router,public loanService:LoanService) { }
 
   ngOnInit(): void {
     this.loanService.loanDetails(localStorage.getItem('accountId')).subscribe(
       data=>{
-        this.loanDetails=data;
-        console.log(data);
+        this.loanService.balance=data.emi;
       },
-      err=>{this.loanDetails.emi="0"}
+      err=>{this.loanService.balance="0"}
     )
   }
 
   logoutUser(){
     localStorage.removeItem('accountId');
+    localStorage.removeItem('email');
     this.router.navigate(['/login']);
   }
-
 }

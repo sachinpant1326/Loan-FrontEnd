@@ -1,88 +1,86 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6 foreclose-left">
-            <h2>TakeLoan</h2><br>
-            <h3>Now take loan in minutes...!</h3>
-        </div>
+<div class="row">
+    <div class="col-lg-6">
+        <img src="../../../assets/images/loan.jpg" style="max-width: 100%;max-height: 100%;">
+    </div>
 
 
-        <!-- Now foreclose details-->
+    <!-- Now foreclose details-->
 
-        <div class="col-lg-6">
-            <div style="float:left; width:500px; box-shadow:0 0 3px #aaa; height:auto;color:#666;">
-                <div
-                    style="width:100%; padding:10px; float:left; background:#1ca8dd; color:#fff; font-size:30px; text-align:center;">
-                    Loan Details
+    <div class="col-lg-6">
+        <div style="float:left; width:500px; height:auto;color:#666;">
+            <div
+                style="width:100%; padding:10px; float:left; background:#1ca8dd; color:#fff; font-size:30px; text-align:center;">
+                Loan Details
+            </div>
+            <div style="width:100%; padding:0px 0px;border-bottom:1px solid rgba(0,0,0,0.2);float:left;">
+                <div style="width:30%; float:left;padding:10px;">
+
+                    <span style="font-size:14px;float:left; width:100%;">
+                        {{loanDetails.name}}
+                    </span>
+
+                    <span style="font-size:14px;float:left;width:100%;">
+                        {{email}}
+                    </span>
                 </div>
-                <div style="width:100%; padding:0px 0px;border-bottom:1px solid rgba(0,0,0,0.2);float:left;">
-                    <div style="width:30%; float:left;padding:10px;">
 
-                        <span style="font-size:14px;float:left; width:100%;">
-                            {{loanDetails.name}}-->
-                        </span>
-
-                        <span style="font-size:14px;float:left;width:100%;">
-                            {{email}}-->
-                        </span>
-                    </div>
-
-                    <div style="width:40%; float:right; text-align: right;margin-right: 5px;">
-                        <b>Date : </b>
-                    </div>
-                </div>
-                <div style="width:100%; padding:0px; float:left;">
-
-                    <div style="width:100%;float:left;background:#efefef;">
-                        <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;font-weight:600;">
-                            Decription
-                        </span>
-                        <span style="font-weight:600;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
-                            Amount
-                        </span>
-                    </div>
-
-                    <div style="width:100%;float:left;">
-                        <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
-                            Emi Remaining
-                        </span>
-                        <span
-                            style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
-                            {{loanDetails.emi}}
-                        </span>
-                    </div>
-                    <div style="width:100%;float:left;">
-                        <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
-                            Emi amount ( /month)
-                        </span>
-                        <span
-                            style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
-                            {{loanDetails.emi_amount}}
-                        </span>
-                    </div>
-
-                    <div style="width:100%;float:left;">
-                        <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
-                            Penalty
-                        </span>
-                        <span
-                            style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
-                            {{loanDetails.penalty}}
-                        </span>
-                    </div>
-
-                    <div style="width:100%;float:left; background:#fff;">
-
-                        <span
-                            style="font-weight:600;float:right;padding:10px 0px;width:40%;color:#666;text-align:center;">
-                            {{totalAmount}}
-                        </span>
-                    </div>
-
+                <div style="width:40%; float:right; text-align: right;margin-right: 5px;">
+                    <b>Date : {{date}}</b>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <button type="text" class="btn btn-success" (click)="closeLoan()">Pay Loan</button>
-            </div>      
-      </div>
+            <div style="width:100%; padding:0px; float:left;">
 
+                <div style="width:100%;float:left;background:#efefef;">
+                    <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;font-weight:600;">
+                        Decription
+                    </span>
+                    <span style="font-weight:600;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                        Amount
+                    </span>
+                </div>
+
+                <div style="width:100%;float:left;">
+                    <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
+                        Emi Remaining
+                    </span>
+                    <span style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                        {{loanDetails.emi}}
+                    </span>
+                </div>
+                <div style="width:100%;float:left;">
+                    <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
+                        Emi amount ( /month)
+                    </span>
+                    <span style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                        {{loanDetails.emi_amount}}
+                    </span>
+                </div>
+
+                <div style="width:100%;float:left;">
+                    <span style="float:left; text-align:left;padding:10px;width:50%;color:#888;">
+                        Penalty
+                    </span>
+                    <span style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                        {{loanDetails.penalty}}
+                    </span>
+                </div>
+
+                <hr>
+
+                <div style="width:100%;float:left; background:#fff;">
+
+                    <span style="font-weight: 600;float:left; text-align:left;padding:10px;width:50%;color:#888;">
+                        Total Amount
+                    </span>
+                    <span style="font-weight:normal;float:left;padding:10px ;width:40%;color:#888;text-align:right;">
+                        {{totalAmount}}
+                    </span>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-3" style="margin-top: 20px;">
+            <button type="text" class="btn btn-success" (click)="closeLoan()">ForeClose</button>
+        </div>
     </div>

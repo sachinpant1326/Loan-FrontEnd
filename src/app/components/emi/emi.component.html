@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-    <div class="row">
+    <div class="row" style="margin-top: 20px;">
         <form [formGroup]="payForm" (ngSubmit)="payLoan()" class="form-group">
             <div class="col-lg-offset-2 col-lg-2">
                 <label for="emi">No of Emi</label><br>
@@ -9,10 +9,8 @@
             <div class="col-lg-4">
                 <!--account field-->
                 <input type="number" id="emi" formControlName="emi" class="form-control"/>
-                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.required">
-                    Field is required..
-                </div>
-                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors.pattern">
+                
+                <div class="text-danger" *ngIf="submitted && payForm.controls.emi.errors">
                     Invalid value (1-5 is valid) ..
                 </div>
             </div>

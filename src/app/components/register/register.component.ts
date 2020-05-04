@@ -42,13 +42,15 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(this.registerForm.value).subscribe(
       data=>{
-        console.log(data);
-        alert(data)},
+        alert("You are registered successfully");
+        this.router.navigate(['/login']);
+      },
       err=>{
-        console.log(err);
-        alert(err);}
+        alert("Already registered with this Id");
+        this.submitted=false;
+        this.registerForm.reset();
+      }
     );
-    this.router.navigate(['/login']);
+    
   }
-
 }
