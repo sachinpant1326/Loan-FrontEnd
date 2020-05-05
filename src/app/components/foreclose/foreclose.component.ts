@@ -14,19 +14,19 @@ export class ForecloseComponent implements OnInit {
   loanDetails: Status;
   totalAmount: number;
   email: string;
-  date: Date;
+  date: any;
 
   constructor(private formBuilder: FormBuilder, private loanService: LoanService) { }
 
   ngOnInit(): void {
-
       this.initialize();
       this.getLoanStatus();
   }
 
   initialize() {
 
-    this.date=new Date();
+    let d=new Date();
+    this.date=d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear();
     this.email = localStorage.getItem('email');
     this.loanDetails = new Status();
     this.loanDetails.emi = "0";
