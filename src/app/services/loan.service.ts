@@ -33,7 +33,7 @@ export class LoanService {
 
 
   foreClose(accountId){
-    return this.httpClient.delete(this.baseUrl+"foreclose/"+accountId);
+    return this.httpClient.delete(this.baseUrl+"foreclose/"+accountId,{responseType:'text'});
   }
 
   calculateEmi(obj){

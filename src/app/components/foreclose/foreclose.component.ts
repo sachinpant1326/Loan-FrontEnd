@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoanService } from 'src/app/services/loan.service';
 import { Status } from 'src/app/models/Status.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-foreclose',
@@ -16,7 +17,7 @@ export class ForecloseComponent implements OnInit {
   email: string;
   date: any;
 
-  constructor(private formBuilder: FormBuilder, private loanService: LoanService) { }
+  constructor(private formBuilder: FormBuilder,private router:Router, private loanService: LoanService) { }
 
   ngOnInit(): void {
       this.initialize();
@@ -31,7 +32,7 @@ export class ForecloseComponent implements OnInit {
     this.loanDetails = new Status();
     this.loanDetails.emi = "0";
     this.loanDetails.emi_amount = "0.0";
-    this.loanDetails.name = "GOD";
+    this.loanDetails.name = "No One";
     this.loanDetails.penalty = "0.0";
     this.totalAmount = 0;
   }
@@ -49,10 +50,16 @@ export class ForecloseComponent implements OnInit {
 
   closeLoan() {
     this.submit = true;
+    if(this.totalAmount==0)
+    {
+      alert("You dont have any loan");
+      return;
+    }
     this.loanService.foreClose(localStorage.getItem('accountId')).subscribe(
       data => { 
-        alert(data);
-        this.getLoanStatus();
+        alert("Thank you for using our loan service. Your account has been foreclosed successfully");
+        this.loanService.balance="0";
+        this.router.navigate(['/home']);
       },
       err => { alert("You don't have any loan") }
     );
